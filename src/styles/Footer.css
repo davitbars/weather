@@ -15,7 +15,6 @@ a {
     color: white;
 }
 
-/* Mobile responsiveness */
 @media (max-width: 600px) {
     .footer-content {
         padding: 0 10px;

@@ -29,7 +29,7 @@ const Today = ({ weatherData, forecastData }) => {
         return require(`../imgs/${imageName}`);
     };
 
-    const currentDate = new Date(); // Get the current date and time
+    const currentDate = new Date();
     const formattedDate = currentDate.toLocaleString();
 
     const groupByDay = forecastData.list.reduce((acc, data) => {
@@ -66,13 +66,13 @@ const Today = ({ weatherData, forecastData }) => {
 
     const scrollLeft = () => {
         if (scrollContainerRef.current) {
-            scrollContainerRef.current.scrollLeft -= 200; // You can adjust the scroll distance as needed
+            scrollContainerRef.current.scrollLeft -= 100;
         }
     };
 
     const scrollRight = () => {
         if (scrollContainerRef.current) {
-            scrollContainerRef.current.scrollLeft += 200; // You can adjust the scroll distance as needed
+            scrollContainerRef.current.scrollLeft += 100;
         }
     };
 
@@ -125,7 +125,7 @@ const Today = ({ weatherData, forecastData }) => {
                     <div className="location-info">
                         <h2>{`${weatherData.name}, ${weatherData.sys.country}`}</h2>
 
-                        <p className='small-text'>{`As of: ${formattedDate}`}</p>
+                        <p className='small-text'>{`As of: ${formattedDate} local time`}</p>
 
                     </div>
 
@@ -146,13 +146,14 @@ const Today = ({ weatherData, forecastData }) => {
                 </div>
 
                 <div className="today-data-container">
+                    <h2 className='section-title'>Weather Data</h2>
 
                     <div className='slider'>
-                        <p>{`Sunrise: ${new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`}</p>
+                        <p className='sun'>{`Sunrise: ${new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`}</p>
                         <div className='status-bar' id='statusBar'>
                             <div className='current-time-marker' id='currentTimeMarker'></div>
                         </div>
-                        <p>{`Sunset: ${new Date(weatherData.sys.sunset * 1000).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`}</p>
+                        <p className='sun'>{`Sunset: ${new Date(weatherData.sys.sunset * 1000).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`}</p>
                     </div>
 
                     <div className='data-table'>
@@ -171,36 +172,39 @@ const Today = ({ weatherData, forecastData }) => {
                     </div>
 
                 </div>
-
-                {forecastData && (
-                    <div className="hourly-forecast-container">
-                        {todayForecasts.length > 3 && (
-                            <div className="scroll-button left" onClick={scrollLeft}>
-                                <FontAwesomeIcon icon={faChevronLeft} />
-                            </div>
-                        )}
-                        <div className="hourly-forecast" ref={scrollContainerRef}>
-                            {todayForecasts.map((item) => (
-                                <div className="forecast-item" key={item.dt}>
-                                    <div className='weather-condition detail'>{item.weather[0].main}</div>
-                                    <div className="icon">
-                                        <img src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`} alt="Weather Icon" className='weather-icon' />
-                                    </div>
-                                    <div className="temperature detail">{`${Math.round(item.main.temp)}°F`}</div>
-                                    <div className="time detail">{new Date(item.dt * 1000).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</div>
+                <div className="hourly-forecast-container">
+                    <h2 className='section-title'>3 Hour Forecasts</h2>
+                    {forecastData && (
+                        <div className="hourly-forecast-container-secondary">
+                            {todayForecasts.length > 3 && (
+                                <div className="scroll-button left" onClick={scrollLeft}>
+                                    <FontAwesomeIcon icon={faChevronLeft} />
                                 </div>
-                            ))}
-                        </div>
-                        {todayForecasts.length > 3 && (
-                            <div className="scroll-button right" onClick={scrollRight}>
-                                <FontAwesomeIcon icon={faChevronRight} />
+                            )}
+                            <div className="hourly-forecast" ref={scrollContainerRef}>
+                                {todayForecasts.map((item) => (
+                                    <div className="forecast-item" key={item.dt}>
+                                        <div className='weather-condition detail'>{item.weather[0].main}</div>
+                                        <div className="icon">
+                                            <img src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`} alt="Weather Icon" className='weather-icon' />
+                                        </div>
+                                        <div className="temperature detail">{`${Math.round(item.main.temp)}°F`}</div>
+                                        <div className="time detail">{new Date(item.dt * 1000).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</div>
+                                    </div>
+                                ))}
                             </div>
-                        )}
-                    </div>
-                )}
+                            {todayForecasts.length > 3 && (
+                                <div className="scroll-button right" onClick={scrollRight}>
+                                    <FontAwesomeIcon icon={faChevronRight} />
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
 
 
                 <div className="dropdown-container">
+                    <h2 className='section-title'>7-Day Forecast</h2>
                     {Object.entries(groupByDay).map(([date, dayData], index) => (
                         new Date(dayData[0].dt * 1000).toLocaleDateString() !== new Date().toLocaleDateString() && (
                             <div key={index} className="dropdown">
@@ -252,7 +256,6 @@ const Today = ({ weatherData, forecastData }) => {
                         )
                     ))}
                 </div>
-
             </div>
         </div>
     );

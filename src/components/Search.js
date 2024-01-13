@@ -5,7 +5,6 @@ const Search = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = () => {
-    // Pass the exact match to the parent component
     onSearch(searchTerm.trim());
   };
 

@@ -8,7 +8,7 @@ const Weather = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
 
-  const apiKey = '8d8d7a7ab9e3d907cff8f940e128970a';
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   const fetchWeatherByCity = async (city) => {
     try {
@@ -64,9 +64,9 @@ const Weather = () => {
     } else {
       console.error('Geolocation is not supported by your browser.');
     }
-  }, []); // Empty dependency array ensures the effect runs only once when the component mounts
+    // eslint-disable-next-line
+  }, []);
 
-  // Function to handle search submission
   const handleSearchSubmit = (city) => {
     // Fetch weather data based on the searched city
     fetchWeatherByCity(city);
@@ -76,7 +76,6 @@ const Weather = () => {
     <div>
       <Search onSearch={handleSearchSubmit} />
 
-      {/* Pass both weatherData and forecastData to the Today component */}
       {weatherData && forecastData && (
         <Today weatherData={weatherData} forecastData={forecastData} />
       )}

@@ -32,6 +32,7 @@ p {
     font-size: 2em;
     margin: 0;
     margin-bottom: 5px;
+    text-align: center;
 }
 
 .small-text {
@@ -71,6 +72,17 @@ p {
     padding: 30px;
     margin-top: 20px;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hourly-forecast-container-secondary {
+    overflow: hidden;
+    position: relative;
+    border: none;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
     justify-content: center;
 }
 
@@ -83,14 +95,11 @@ p {
     display: flex;
     overflow-x: auto;
     scrollbar-width: thin;
-    /* Firefox */
     scrollbar-color: transparent transparent;
-    /* Firefox */
 }
 
 .hourly-forecast::-webkit-scrollbar {
     width: 0;
-    /* Adjust the width as needed */
     display: none;
 }
 
@@ -100,7 +109,6 @@ p {
 
 .hourly-forecast::-webkit-scrollbar-thumb {
     background-color: transparent;
-    /* Set the scrollbar thumb color to transparent */
 }
 
 .scroll-button {
@@ -118,6 +126,10 @@ p {
 
 .right {
     right: 10px;
+}
+
+.sun {
+    text-align: center;
 }
 
 .today-data-container {
@@ -145,7 +157,7 @@ p {
     border-right: none;
 }
 
-.column p{
+.column p {
     text-align: left;
 }
 
@@ -154,15 +166,15 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 70%; /* Adjust the width as needed */
-    margin: 0 auto; /* Center the slider within its container */
+    width: 70%;
+    margin: 0 auto;
 }
 
 .status-bar {
     height: 10px;
     background-color: #ccc;
-    flex-grow: 1; /* Allow the status bar to grow and take available space */
-    margin: 0 10px; /* Add margin between sunrise/sunset times and the status bar */
+    flex-grow: 1;
+    margin: 0 10px;
     position: relative;
 }
 
@@ -183,11 +195,9 @@ p {
     width: 80%;
     margin-top: 20px;
     padding: 30px;
-    background-color: rgba(0,0,0,0.75);
+    background-color: rgba(0, 0, 0, 0.75);
     margin-bottom: 20px;
 }
-
-/* Styles for dropdowns */
 
 .dropdown-header {
     color: #000;
@@ -215,12 +225,12 @@ p {
     align-items: center;
 }
 
-.right-column, 
+.right-column,
 .left-column {
     display: flex;
 }
 
-.date, 
+.date,
 .high-low {
     margin-right: 5px;
 }
@@ -229,6 +239,10 @@ p {
     font-size: large;
     font-weight: 500;
     color: white;
+}
+
+.section-title {
+    text-align: center;
 }
 
 @media (min-width: 768px) {
