@@ -1,0 +1,273 @@
+p {
+    font-size: larger;
+    font-weight: 700;
+}
+
+.weather-container {
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.location-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+.location-info h2 {
+    font-size: 2em;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.small-text {
+    margin: 0;
+    font-size: 0.8em;
+}
+
+.stats {
+    display: flex;
+    margin-right: 30px;
+}
+
+.temp-icons {
+    display: flex;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.stat p {
+    margin: 0;
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+.hourly-forecast-container {
+    width: 80%;
+    overflow: hidden;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.75);
+    border: none;
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.forecast-item {
+    text-align: center;
+    margin: 0 10px;
+}
+
+.hourly-forecast {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    /* Firefox */
+    scrollbar-color: transparent transparent;
+    /* Firefox */
+}
+
+.hourly-forecast::-webkit-scrollbar {
+    width: 0;
+    /* Adjust the width as needed */
+    display: none;
+}
+
+.time {
+    text-wrap: nowrap;
+}
+
+.hourly-forecast::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    /* Set the scrollbar thumb color to transparent */
+}
+
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+}
+
+.left {
+    left: 10px;
+}
+
+.right {
+    right: 10px;
+}
+
+.today-data-container {
+    background-color: rgba(0, 0, 0, 0.75);
+    border: none;
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 20px;
+    width: 80%;
+}
+
+.data-table,
+.header-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column {
+    flex: 1;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+}
+
+.column:last-child {
+    border-right: none;
+}
+
+.column p{
+    text-align: left;
+}
+
+.slider {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the slider within its container */
+}
+
+.status-bar {
+    height: 10px;
+    background-color: #ccc;
+    flex-grow: 1; /* Allow the status bar to grow and take available space */
+    margin: 0 10px; /* Add margin between sunrise/sunset times and the status bar */
+    position: relative;
+}
+
+.current-time-marker {
+    width: 2px;
+    height: 20px;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dropdown-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 80%;
+    margin-top: 20px;
+    padding: 30px;
+    background-color: rgba(0,0,0,0.75);
+    margin-bottom: 20px;
+}
+
+/* Styles for dropdowns */
+
+.dropdown-header {
+    color: #000;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: white;
+    border-bottom: 1px solid #111;
+}
+
+.dropdown-details {
+    color: black;
+    background-color: white;
+    padding: 10px;
+}
+
+.dropdown-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.toggle-button {
+    display: flex;
+    align-items: center;
+}
+
+.right-column, 
+.left-column {
+    display: flex;
+}
+
+.date, 
+.high-low {
+    margin-right: 5px;
+}
+
+.detail {
+    font-size: large;
+    font-weight: 500;
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .future-days {
+        width: unset;
+    }
+
+    .weather-icon {
+        height: 100px;
+        width: 100px;
+    }
+
+    .scroll-button {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats {
+        display: none;
+    }
+
+    .info-container {
+        justify-content: center;
+    }
+
+    .location-info {
+        margin: 0;
+    }
+
+    .title {
+        display: none;
+    }
+
+    .data-table {
+        flex-direction: column;
+    }
+
+    .column {
+        border-right: none;
+    }
+}
