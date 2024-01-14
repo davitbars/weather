@@ -1,5 +1,6 @@
 {
   "name": "weather-app",
+  "homepage": "https://davitbars.github.io/weather",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
